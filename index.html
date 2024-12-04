@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=Urbanist:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" sizes="32x32" href="./Lab3 Smilely Favicon.png">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 </head>
 <body>
     <div id="welcome" class="container">
@@ -24,19 +24,19 @@
             <!-- Same structure as your original, just update images -->
             <div class="scroll-content">
                 <div class="image-group">
-                    <img src="./Lab1 Decor1.orange-clearmedium.preview.png" alt="Image 1">
-                    <img src="./Lab1 Decor2.orange-clearmedium.preview.png" alt="Image 2">
-                    <img src="./Lab1 Decor3.orange-clearmedium.preview.png" alt="Image 3">
-                    <img src="./Lab1 Decor4.orange-clearmedium.preview.png" alt="Image 4">
-                    <img src="./Lab1 Decor5.orange-clearmedium.preview.png" alt="Image 5">
+                    <img src="./Lab3 Decor1.png" alt="Image 1">
+                    <img src="./Lab3 Decor2.png" alt="Image 2">
+                    <img src="./Lab3 Decor3.png" alt="Image 3">
+                    <img src="./Lab3 Decor4.png" alt="Image 4">
+                    <img src="./Lab3 Decor5.png" alt="Image 5">
                 </div>
                 <!-- Duplicate group for seamless loop -->
                 <div class="image-group">
-                    <img src="./Lab1 Decor1.orange-clearmedium.preview.png" alt="Image 1">
-                    <img src="./Lab1 Decor2.orange-clearmedium.preview.png" alt="Image 2">
-                    <img src="./Lab1 Decor3.orange-clearmedium.preview.png" alt="Image 3">
-                    <img src="./Lab1 Decor4.orange-clearmedium.preview.png" alt="Image 4">
-                    <img src="./Lab1 Decor5.orange-clearmedium.preview.png" alt="Image 5">
+                    <img src="./Lab3 Decor1.png" alt="Image 1">
+                    <img src="./Lab3 Decor2.png" alt="Image 2">
+                    <img src="./Lab3 Decor3.png" alt="Image 3">
+                    <img src="./Lab3 Decor4.png" alt="Image 4">
+                    <img src="./Lab3 Decor5.png" alt="Image 5">
                 </div>
             </div>
         </div>
@@ -112,20 +112,18 @@
         <div class="header">
             <h2>RESULTS</h2>
         </div>
-
-        <div class="section2">
-            <div id="results-summary"></div>
-
+        <div id="results-summary"></div>
             <div id="debrief" class="section3">
                 <h3>Study Debrief</h3>
-                <p>This experiment was a conceptual replication of Halberstadt et al. (2013), investigating how familiarity with celebrities affects our perception of morphed faces created from their images.</p>
+                <p>This experiment was a conceptual replication of <a href="https://www.nssrperception.com/LPSY3516/Readings/Halberstadt%20EtAl%202013%20Beauty%20in%20averageness%20vs%20categorical%20disfluency.pdf">Halberstadt et al. (2013)</a>, investigating how familiarity with celebrities affects our perception of morphed faces created from their images.</p>
                 
                 <p>The study explores two competing effects in face perception:</p>
                 <ul class="debrief-info">
-                    <li>The "beauty in averageness" effect: Averaged faces are typically rated as more attractive</li>
-                    <li>The "processing fluency" effect: We prefer stimuli that are easy to categorize</li>
+                    <li><p>The "beauty in averageness" effect: Averaged faces are typically rated as more attractive</p></li>
+                    <li><p>The "processing fluency" effect: We prefer stimuli that are easy to categorise</p></li>
                 </ul>
-                
+                <p>Processing fluency refers to the ease with which our brains can process and categorise visual information. When we see a face that's a morph between two familiar celebrities, our visual system experiences cognitive conflict- known as disfluency. This disfluency is similar to what happens with the <a href="https://www.simplypsychology.org/uncanny-valley.html">"uncanny valley"</a> effect, where almost-but-not-quite-human faces make us uncomfortable because they're difficult to categorise. In both cases, processing difficulty leads to reduced aesthetic pleasure.
+                </p><br>
                 <p>The key finding from Halberstadt et al. was that morphed faces were rated as more pleasing when observers were unfamiliar with the original celebrities, suggesting that familiarity can actually reduce the aesthetic appeal of morphed faces.</p>
             </div>
 
