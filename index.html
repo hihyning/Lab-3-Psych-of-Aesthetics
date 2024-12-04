@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Psychology of Aesthetics+Design Lab3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=Urbanist:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="./Lab3 Smilely Favicon.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+</head>
+<body>
+    <div id="welcome" class="container">
+        <div class="title">
+            <img src="./Lab3 Smilely.png" alt="Lab Icon"> 
+            Psychology of Aesthetics & Design&nbsp;&nbsp;|&nbsp;&nbsp;Fall 2024
+        </div>
+
+        <div class="header">
+            <h1>Celebrity Morphs.</h1>
+            <h2>Exploring Face Perception & Recognition</h2>
+        </div>
+
+        <div class="scroll-container">
+            <!-- Same structure as your original, just update images -->
+            <div class="scroll-content">
+                <div class="image-group">
+                    <img src="./Lab1 Decor1.orange-clearmedium.preview.png" alt="Image 1">
+                    <img src="./Lab1 Decor2.orange-clearmedium.preview.png" alt="Image 2">
+                    <img src="./Lab1 Decor3.orange-clearmedium.preview.png" alt="Image 3">
+                    <img src="./Lab1 Decor4.orange-clearmedium.preview.png" alt="Image 4">
+                    <img src="./Lab1 Decor5.orange-clearmedium.preview.png" alt="Image 5">
+                </div>
+                <!-- Duplicate group for seamless loop -->
+                <div class="image-group">
+                    <img src="./Lab1 Decor1.orange-clearmedium.preview.png" alt="Image 1">
+                    <img src="./Lab1 Decor2.orange-clearmedium.preview.png" alt="Image 2">
+                    <img src="./Lab1 Decor3.orange-clearmedium.preview.png" alt="Image 3">
+                    <img src="./Lab1 Decor4.orange-clearmedium.preview.png" alt="Image 4">
+                    <img src="./Lab1 Decor5.orange-clearmedium.preview.png" alt="Image 5">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>WELCOME TO LAB 3</h3>
+            <ul class="study-info">
+                <li><p>You will see morphed faces created from two celebrities</p></li>
+                <li><p>Rate how pleasing each morphed face looks</p></li>
+                <li><p>Then rate your familiarity with each original celebrity</p></li>
+                <li><p>Use a scale from 1 (not at all) to 7 (very much)</p></li>
+            </ul>
+        </div>
+
+        <button class="button" id="start-button" onclick="startExperiment()">START</button>
+    </div>
+
+    <div id="instructions" class="container hidden">
+        <div class="header">
+            <h2>Overview</h2>
+        </div>
+
+        <div class="section">
+            <h1>Task Instructions</h1>
+            <ul class="study-info">
+                <li><p>You'll see a morphed face - rate how pleasing it looks</p></li>
+                <li><p>Then you'll see which celebrities were used</p></li>
+                <li><p>Rate your familiarity with each celebrity</p></li>
+                <li><p>This will repeat for 8 different morphs</p></li>
+                <li><p>Use the slider: 1 = not at all, 7 = very much</p></li>
+            </ul>
+        </div>
+
+        <button class="button" id="begintrials-button" onclick="startTrials()">BEGIN TRIALS</button>
+    </div>
+
+    <div id="experiment" class="container hidden">
+        <div class="header">
+            <h2>TRIAL <span id="trial-number">1</span></h2>
+        </div>
+
+        <div class="section">
+            <div class="progress-bar">
+                <div id="progress" class="progress-bar-fill"></div>
+            </div>
+
+            <div id="stimulus-container" class="stimulus-container">
+                <!-- Morph image will be displayed here -->
+            </div>
+
+            <div id="rating-prompt" class="instruction-text">
+                <!-- Dynamic prompt text here -->
+            </div>
+
+            <div class="rating-container">
+                <input type="range" id="rating-slider" min="1" max="7" value="4" step="1">
+                <div class="rating-labels">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                    <span>7</span>
+                </div>
+            </div>
+        </div>
+
+        <button class="button" onclick="recordResponse()">NEXT</button>
+    </div>
+
+    <div id="results" class="container hidden">
+        <div class="header">
+            <h2>RESULTS</h2>
+        </div>
+
+        <div class="section2">
+            <div id="results-summary"></div>
+
+            <div id="debrief" class="section3">
+                <h3>Study Debrief</h3>
+                <p>This experiment was a conceptual replication of Halberstadt et al. (2013), investigating how familiarity with celebrities affects our perception of morphed faces created from their images.</p>
+                
+                <p>The study explores two competing effects in face perception:</p>
+                <ul class="debrief-info">
+                    <li>The "beauty in averageness" effect: Averaged faces are typically rated as more attractive</li>
+                    <li>The "processing fluency" effect: We prefer stimuli that are easy to categorize</li>
+                </ul>
+                
+                <p>The key finding from Halberstadt et al. was that morphed faces were rated as more pleasing when observers were unfamiliar with the original celebrities, suggesting that familiarity can actually reduce the aesthetic appeal of morphed faces.</p>
+            </div>
+
+            <div class="save-section">
+                <h3>Save Your Results</h3>
+                <p>Click below to download your results and screenshot:</p>
+                <button class="button" onclick="downloadResults()">DOWNLOAD</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
