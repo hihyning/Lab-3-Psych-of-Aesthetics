@@ -206,6 +206,43 @@ function showResults() {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Celebrity Morph Ratings vs. Familiarity',
+                        font: {
+                            family: 'Space Grotesk',
+                            size: 20,
+                            weight: 400
+                        },
+                        padding: 20,
+                        color: '#111111'
+                    },
+                    tooltip: {
+                        backgroundColor: 'white',
+                        titleColor: '#111111',
+                        bodyColor: '#111111',
+                        borderColor: '#05f100',
+                        borderWidth: 2,
+                        padding: 12,
+                        titleFont: {
+                            family: 'Space Grotesk',
+                            size: 14
+                        },
+                        bodyFont: {
+                            family: 'Space Grotesk',
+                            size: 14
+                        },
+                        callbacks: {
+                            label: function(context) {
+                                return `Familiarity: ${context.parsed.x.toFixed(1)}, Rating: ${context.parsed.y.toFixed(1)}`;
+                            }
+                        }
+                    }
+                },
                 scales: {
                     x: {
                         title: {
@@ -252,32 +289,7 @@ function showResults() {
                         }
                     }
                 },
-                plugins: {
-                    legend: {
-                        display: false
-                    },
-                    tooltip: {
-                        backgroundColor: 'white',
-                        titleColor: '#111111',
-                        bodyColor: '#111111',
-                        borderColor: '#05f100',
-                        borderWidth: 2,
-                        padding: 12,
-                        titleFont: {
-                            family: 'Space Grotesk',
-                            size: 14
-                        },
-                        bodyFont: {
-                            family: 'Space Grotesk',
-                            size: 14
-                        },
-                        callbacks: {
-                            label: function(context) {
-                                return `Familiarity: ${context.parsed.x.toFixed(1)}, Rating: ${context.parsed.y.toFixed(1)}`;
-                            }
-                        }
-                    }
-                }
+                backgroundColor: 'white'
             }
         });
     }
@@ -311,45 +323,29 @@ function showResults() {
         return numerator / denominator;
     }
 
-// Download results function
-function downloadResults() {
-    const results = {
-        timestamp: new Date().toISOString(),
-        trials: trials,
-        totalDuration: ((Date.now() - config.startTime) / 1000).toFixed(2) + ' seconds'
-    };
-
-    // Download JSON
-    const jsonBlob = new Blob([JSON.stringify(results, null, 2)], { type: 'application/json' });
-    const jsonUrl = window.URL.createObjectURL(jsonBlob);
-    const jsonLink = document.createElement('a');
-    jsonLink.href = jsonUrl;
-    jsonLink.download = 'celebrity-morphs-results.json';
-    document.body.appendChild(jsonLink);
-    jsonLink.click();
-    document.body.removeChild(jsonLink);
-    window.URL.revokeObjectURL(jsonUrl);
-
-    // Take screenshot
-    const elementToCapture = document.querySelector('.results-summary-container');
-    elementToCapture.style.backgroundColor = 'white';
+    function downloadResults() {
+        const results = {
+            timestamp: new Date().toISOString(),
+            trials: trials,
+            totalDuration: ((Date.now() - config.startTime) / 1000).toFixed(2) + ' seconds'
+        };
     
-    html2canvas(elementToCapture, {
-        backgroundColor: '#ffffff',
-        scale: 2,
-        logging: false,
-        useCORS: true,
-        windowWidth: elementToCapture.scrollWidth,
-        windowHeight: elementToCapture.scrollHeight
-    }).then(canvas => {
-        const imageUrl = canvas.toDataURL('image/png', 1.0);
-        const downloadLink = document.createElement('a');
-        downloadLink.href = imageUrl;
-        downloadLink.download = 'celebrity-morphs-results.png';
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
-    }).catch(error => {
-        console.error('Screenshot failed:', error);
-    });
-}
+        // Download JSON
+        const jsonBlob = new Blob([JSON.stringify(results, null, 2)], { type: 'application/json' });
+        const jsonUrl = window.URL.createObjectURL(jsonBlob);
+        const jsonLink = document.createElement('a');
+        jsonLink.href = jsonUrl;
+        jsonLink.download = 'celebrity-morphs-results.json';
+        jsonLink.click();
+        window.URL.revokeObjectURL(jsonUrl);
+    
+        // Get the chart canvas
+        const chartCanvas = document.getElementById('scatterChart');
+        const chartImage = chartCanvas.toDataURL('image/png');
+        
+        // Create download link for chart
+        const chartLink = document.createElement('a');
+        chartLink.href = chartImage;
+        chartLink.download = 'celebrity-morphs-results.png';
+        chartLink.click();
+    }

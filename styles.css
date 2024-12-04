@@ -598,6 +598,10 @@ ol li {
     padding: 1rem;
 }
 
+#scatterChart {
+    background-color: white;
+}
+
 .analysis-section {
     margin-top: 2rem;
     padding: 1rem;
